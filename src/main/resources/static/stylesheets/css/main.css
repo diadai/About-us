@@ -8,6 +8,7 @@ body {padding:0;padding-top: 2rem;margin: 0;}
 .nav{background-color:rgba(54,54,54,1);}
 .nav-item .nav-link{cursor:default;}
 
+main img,#life img{background: url(../../img/loading.gif) 50% no-repeat;}
 /*主页*/
 .top-introduce{
     height:500px;
