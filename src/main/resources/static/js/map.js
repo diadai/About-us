@@ -3,8 +3,8 @@ $.get('../static/data/china.json', function (chinaJson) {
     var mapChart = echarts.init(document.getElementById('e-content'));
     var res = [];
     var location_info = [
-        {"name":"海门","longitude":121.15,"latitude":31.89,"number":87},
-        {"name":"鄂尔多斯","longitude":109.781327,"latitude":39.608266,"number":47}
+        {"name":"海门","longitude":121.15,"latitude":31.89,"number":1},
+        {"name":"鄂尔多斯","longitude":109.781327,"latitude":39.608266,"number":2}
         ];
 
     for (var i = 0; i < location_info.length; i++) {
@@ -59,24 +59,36 @@ $.get('../static/data/china.json', function (chinaJson) {
         backgroundColor: '#404a59',	// 图表背景色
         series: [
             {
-                name: '销量', // series名称
+                name: '人数', // series名称
                 type: 'scatter', // series图表类型
                 coordinateSystem: 'geo', // series坐标系类型
-                data:res
+                data:res,
+                symbolSize:6,
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: false
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        borderColor: '#fff',
+                        borderWidth: 1
+                    }
+                }
             }
         ],
         visualMap: {
-            type: 'continuous', // 连续型
-            min: 0,       		// 值域最小值，必须参数
-            max: 400,			// 值域最大值，必须参数
-            calculable: true,	// 是否启用值域漫游
-            inRange: {
-                color: ['#C1FFC1', '#76EE00', '#228B22']
-                // 指定数值从低到高时的颜色变化
-            },
+            min: 0,
+            max: 4,
+            splitNumber: 4,
+            color: ['#d94e5d','#eac736','#50a3ba'],
             textStyle: {
-                color: '#fff'	// 值域控件的文本颜色
+                color: '#fff'
             }
+
         }
     };
     mapChart.setOption(option);
